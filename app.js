@@ -4,9 +4,9 @@ const dotenv = require('dotenv');
 
 const userRoutes = require('./routes/userRoutes');
 
+const RecipeRouets = require('./routes/recipeRoutes')
 const CommentRoutes = require('./routes/commentRoutes')
 
-const RecipeRouets = require('./routes/recipeRoutes')
 
 
 dotenv.config();
@@ -19,8 +19,8 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((error) => console.error('Error connecting to MongoDB:', error));
 
   app.use('/api/user', userRoutes);
+  app.use('/api/recipe',RecipeRouets)
   app.use('/api/comment', CommentRoutes);
-  app.use('/api/recipe')
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
